@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  web:
+    container_name: "transfer-bank-web"
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - transfer_bank_network
+    depends_on:
+      - api
+
+  api:
+    container_name: "transfer-bank-api"
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - transfer_bank_network
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - database
+
+  database:
+    container_name: "transfer-bank-database"
+    image: postgres
+    restart: always
+    networks:
+      - transfer_bank_network
+    shm_size: 10g
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+
+networks:
+  transfer_bank_network:
+    driver: bridge
