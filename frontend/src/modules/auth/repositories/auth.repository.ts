@@ -2,6 +2,7 @@ import { Repository } from '@/core/http/repository';
 import { Message } from '@/shared/domain/types';
 import { User } from '@/modules/user/domain/entities';
 import {
+  CreateAccountRequestDTO,
   LoginRequestDTO,
   LoginResponseDTO,
   RecoverRequestDTO,
@@ -31,7 +32,7 @@ export class AuthRepository extends Repository {
       return data;
     }
 
-    throw new Error('Ops, algo inesperado aconteceu!');
+    throw new Error('Oops, something unexpected happened!');
   }
 
   public async check(): Promise<User> {
@@ -39,7 +40,22 @@ export class AuthRepository extends Repository {
 
     if (this.isOK(status)) return new User(data);
 
-    throw new Error('Ops, algo inesperado aconteceu!');
+    throw new Error('Oops, something unexpected happened!');
+  }
+
+  public async createAccount(
+    dto: CreateAccountRequestDTO,
+  ): Promise<LoginResponseDTO> {
+    const { status, data } = await this.http.post<
+      LoginResponseDTO,
+      LoginRequestDTO
+    >('/create-account', dto);
+
+    if (this.isOK(status)) {
+      return data;
+    }
+
+    throw new Error('Oops, something unexpected happened!');
   }
 
   public async recover(recover: RecoverRequestDTO): Promise<Message> {
@@ -52,7 +68,7 @@ export class AuthRepository extends Repository {
       return data;
     }
 
-    throw new Error('Ops, algo inesperado aconteceu!');
+    throw new Error('Oops, something unexpected happened!');
   }
 
   public async reset(reset: ResetRequestDTO): Promise<Message> {
@@ -65,6 +81,6 @@ export class AuthRepository extends Repository {
       return data;
     }
 
-    throw new Error('Ops, algo inesperado aconteceu!');
+    throw new Error('Oops, something unexpected happened!');
   }
 }

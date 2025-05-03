@@ -1,12 +1,11 @@
 import { Container, Typography, Link } from '@mui/material';
 import { PropsWithSx } from '@/shared/domain/types';
 
-export function UnauthenticatedFooter({ sx }: PropsWithSx) {
+export function UnauthenticatedContent({ sx }: PropsWithSx) {
   const currentYear = new Date().getFullYear();
 
   return (
     <Container
-      component="footer"
       sx={{
         display: 'flex',
         alignItems: 'center',
@@ -17,8 +16,9 @@ export function UnauthenticatedFooter({ sx }: PropsWithSx) {
         ...sx,
       }}
     >
+      <h3>CONTENT</h3>
       <Typography variant="body2" fontWeight="light" textAlign="center">
-        Desenvolvido por&nbsp;
+        Developed by&nbsp;
         <Link
           href="https://www.linkedin.com/in/josivaloliveira/"
           rel="noopener noreferrer"

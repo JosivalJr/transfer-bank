@@ -1,5 +1,6 @@
 export enum EUnauthenticatedPath {
-  LOGIN = '/acessar',
-  RECOVER = '/recuperar-senha',
-  RESET = '/recuperar-senha/nova-senha',
+  LOGIN = '/access',
+  CREATE_ACCOUNT = '/create-account',
+  RECOVER = '/recover-password',
+  RESET = '/recover-password/new-password',
 }

@@ -3,9 +3,9 @@ import { z } from 'zod';
 export const passwordSchema = z
   .string({
     invalid_type_error: 'Valor inválido!',
-    required_error: 'Campo obrigatório!',
+    required_error: 'Required field!',
   })
-  .min(1, 'Campo obrigatório!')
+  .min(1, 'Required field!')
   .trim()
   .min(8, 'A senha deve conter no mínimo 8 caracteres.')
   .refine(

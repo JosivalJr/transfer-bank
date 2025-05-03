@@ -12,10 +12,18 @@ export function RequiredAuth() {
   if (loading) {
     return (
       <Stack alignItems="center" justifyContent="center" height="100vh">
-        <CircularProgress size="50px" title="Carregando..." />
+        <CircularProgress size="50px" title="LOADING..." />
       </Stack>
     );
   }
 
-  return authenticated ? <Outlet /> : <Navigate to={EUnauthenticatedPath.LOGIN} state={{ from: location }} replace />;
+  return authenticated ? (
+    <Outlet />
+  ) : (
+    <Navigate
+      to={EUnauthenticatedPath.LOGIN}
+      state={{ from: location }}
+      replace
+    />
+  );
 }

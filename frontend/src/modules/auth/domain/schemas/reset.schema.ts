@@ -5,10 +5,10 @@ export const resetSchema = z
   .object({
     token: z.string().min(1).trim(),
     password: passwordSchema,
-    confirm: z.string().min(1, 'Campo obrigatório!').trim(),
+    confirm: z.string().min(1, 'Required field!').trim(),
   })
   .refine(({ password, confirm }) => password === confirm, {
-    message: 'Confirmação da senha incorreta!',
+    message: 'Incorrect password confirmation!',
     path: ['confirm'],
   });
 export type ResetData = z.infer<typeof resetSchema>;

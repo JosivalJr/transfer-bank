@@ -1,20 +1,31 @@
+import {
+  Login,
+  CreateAccount,
+  RecoverPassword,
+  ResetPassword,
+} from '@/modules/auth/pages';
 import { EUnauthenticatedPath } from '../domain/enums/unauthenticated-path.enum';
 import { Route } from '../domain/interfaces';
 
 export const UNAUTHENTICATED_ROUTES: Array<Route> = [
   {
-    name: 'Acessar',
-    element: <h1>Login</h1>,
+    name: 'Access',
+    element: <Login />,
     path: EUnauthenticatedPath.LOGIN,
   },
   {
-    name: 'Recuperar Senha',
-    path: EUnauthenticatedPath.RECOVER,
-    element: <h1>Recover</h1>,
+    name: 'Create Account',
+    element: <CreateAccount />,
+    path: EUnauthenticatedPath.CREATE_ACCOUNT,
   },
   {
-    name: 'Recuperação de Senha',
+    name: 'Recover Password',
+    path: EUnauthenticatedPath.RECOVER,
+    element: <RecoverPassword />,
+  },
+  {
+    name: 'Create new Password',
     path: EUnauthenticatedPath.RESET,
-    element: <h1>Reset</h1>,
+    element: <ResetPassword />,
   },
 ];

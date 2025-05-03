@@ -1,20 +1,20 @@
 import { Clear } from '@mui/icons-material';
 import { Alert, Box, Collapse, IconButton } from '@mui/material';
 
-export interface IUnauthenticatedContentAlert {
+export interface UnauthenticatedAlert {
   message: string;
   type: 'success' | 'error' | 'warning';
 }
 
-type UnauthenticatedContentAlertProps = {
-  alert: IUnauthenticatedContentAlert;
+type UnauthenticatedAlertProps = {
+  alert: UnauthenticatedAlert;
   clear: () => void;
 };
 
-export function UnauthenticatedContentAlert({
+export function UnauthenticatedAlert({
   alert,
   clear,
-}: UnauthenticatedContentAlertProps) {
+}: UnauthenticatedAlertProps) {
   return (
     <Collapse in={!!alert.message}>
       <Alert

@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { FieldErrors, FieldValues } from 'react-hook-form';
-import { toast } from 'react-toastify';
 
 export function formatErrorForNotification(unhandledError: any): string {
   let returnMessage = '';
@@ -62,16 +60,4 @@ export function formatErrorForNotification(unhandledError: any): string {
 
 export function callbackOnInvalidZod(error: unknown) {
   console.warn('ZOD Error: ', error);
-}
-
-export function handleZodInvalidSchema<T extends FieldValues>(
-  errors: FieldErrors<T>,
-) {
-  callbackOnInvalidZod(errors);
-  Object.values(errors).map((prop) => {
-    if (prop) {
-      if (prop.message && !prop.ref) toast.error(prop.message.toString());
-      if (Array.isArray(prop)) prop.map(handleZodInvalidSchema);
-    }
-  });
 }

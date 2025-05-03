@@ -45,6 +45,6 @@ export function redirect(message?: string) {
         ].includes(('/' + path) as EUnauthenticatedPath),
       )
   ) {
-    throw new Error(message || 'Sem autorização!');
+    throw new Error(message || 'Unauthorized!');
   }
 }

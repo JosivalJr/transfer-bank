@@ -1,4 +1,8 @@
-import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios';
 import { parse, stringify } from 'qs';
 
 import { formatErrorForNotification } from '@/shared/utils/error';
@@ -27,7 +31,7 @@ async function handleAxiosResponseError(error: AxiosError) {
   const originalRequest: any = error.config;
 
   if (error?.response?.status === 502 || error?.code === 'ERR_NETWORK') {
-    throw new Error('Servidor indisponível!');
+    throw new Error('Server unavailable!');
   }
 
   if (error?.response?.status === 401 && !axiosResponseErrorRetry) {
@@ -53,7 +57,7 @@ export const Client = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL_API,
   withCredentials: true,
   timeout: 900000,
-  timeoutErrorMessage: 'O servidor não está respondendo, tente novamente mais tarde.',
+  timeoutErrorMessage: 'Server is not responding, please try again later.',
   paramsSerializer: {
     encode: (params) => parse(params),
     serialize: (params) => stringify(params),

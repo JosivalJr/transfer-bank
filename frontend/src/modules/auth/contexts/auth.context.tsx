@@ -13,6 +13,7 @@ import { EUnauthenticatedPath } from '@/core/router';
 
 import { AuthRepository } from '../repositories';
 import {
+  CreateAccountRequestDTO,
   LoginRequestDTO,
   LoginResponseDTO,
   RecoverRequestDTO,
@@ -20,6 +21,7 @@ import {
 } from '../domain/dto';
 import { Auth, AuthAction, UseAuth } from '../domain/interfaces';
 import { EAuthAction } from '../domain/enums';
+import { toast } from 'react-toastify';
 
 export const AuthContext = createContext<UseAuth>({} as UseAuth);
 
@@ -117,6 +119,18 @@ export function AuthProvider({ children }: PropsWithChildren) {
     }
   }
 
+  async function createAccount(dto: CreateAccountRequestDTO) {
+    try {
+      setLoading(true);
+
+      await repository.createAccount(dto);
+      navigate(EUnauthenticatedPath.LOGIN);
+      toast.success('Account created successfully.');
+    } finally {
+      setLoading(false);
+    }
+  }
+
   async function logout() {
     setLoading(true);
 
@@ -174,6 +188,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
       logout,
       recover,
       reset,
+      createAccount,
       loading,
       refreshUser,
       confirm,

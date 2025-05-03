@@ -1,8 +1,14 @@
+import { passwordSchema } from '@/shared/domain';
 import { z } from 'zod';
 
 export const loginSchema = z.object({
-  email: z.string().min(8, 'Campo obrigatório!').toLowerCase().trim(),
-  password: z.string().min(8, 'Senha de no mínimo 8 caracteres!').trim(),
+  email: z
+    .string()
+    .min(8, 'Required field!')
+    .max(100, 'Email too long')
+    .toLowerCase()
+    .trim(),
+  password: passwordSchema,
   remember: z.boolean(),
 });
 
