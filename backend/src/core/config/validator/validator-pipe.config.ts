@@ -10,7 +10,7 @@ import { plainToInstance } from 'class-transformer';
 
 @Injectable()
 /**
- * Validação do Objeto antes da implementação dele na camada de Controlador
+ *Object validation before implementing it in the Controller layer
  */
 export class ValidatorPipe implements PipeTransform<any> {
   async transform(value: any, { metatype }: ArgumentMetadata) {

@@ -6,9 +6,9 @@ import { SwaggerConfiguration } from './swagger.config';
 
 export class SwaggerDefinition {
   /**
-   * Inicializar documentação do Swagger
-   * @param app Instancia da aplicação
-   * @param url Url que será liberada para visualização desta documentação
+   * Initialize Swagger Documentation
+   * @param app Application instance
+   * @param url URL that will be released for viewing this documentation
    */
   public static start(
     app: INestApplication,
@@ -17,7 +17,7 @@ export class SwaggerDefinition {
   ) {
     new SwaggerConfiguration(app, env)
       .setName('Transfer Bank')
-      .setDescription('API do Transfer Bank')
+      .setDescription('Transfer Bank API')
       .start(url);
   }
 }

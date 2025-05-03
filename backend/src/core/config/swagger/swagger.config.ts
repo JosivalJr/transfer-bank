@@ -41,8 +41,8 @@ export class SwaggerConfiguration {
   }
 
   /**
-   * Iniciar e abrir rota para a documentação Swagger
-   * @param url Url em que será disponibilizado a documentação
+   * Launch and open route to Swagger documentation
+   * @param url URL where the documentation will be made available
    */
   public async start(url: string) {
     const config = this.createConfig();
@@ -54,7 +54,7 @@ export class SwaggerConfiguration {
     return new DocumentBuilder()
       .setTitle(this.name)
       .setDescription(this.description)
-      .setVersion(this.env.isDevelopment ? 'Desenvolvimento' : this.version)
+      .setVersion(this.env.isDevelopment ? 'Developement' : this.version)
       .setContact(
         'Josival Oliveira',
         'https://www.linkedin.com/in/josivaloliveira/',

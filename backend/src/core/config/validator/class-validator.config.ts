@@ -3,8 +3,8 @@ import { ValidatorPipe } from './validator-pipe.config';
 
 export class ClassValidator {
   /**
-   * Inicialização do ClassValidator biblioteca responsável pela criação da validação dos Dtos
-   * @param app Instancia da aplicação
+   * Initialization of the ClassValidator library responsible for creating the Dtos validation
+   * @param app Application instance
    */
   public static start(app: INestApplication): void {
     app.useGlobalPipes(new ValidatorPipe());
