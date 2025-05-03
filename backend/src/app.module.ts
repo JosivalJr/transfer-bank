@@ -3,6 +3,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { MulterModule } from '@nestjs/platform-express';
 import { join } from 'path';
 import { EnvironmentVariablesModule } from '@core/enviroment-variables/enviroment-variables.module';
+import { MailModule } from '@core/mail/mail.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { EnvironmentVariablesModule } from '@core/enviroment-variables/enviromen
     }),
     MulterModule.register({}),
     EnvironmentVariablesModule,
+    MailModule,
   ],
   controllers: [],
   providers: [],
