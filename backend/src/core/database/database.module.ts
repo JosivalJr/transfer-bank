@@ -19,6 +19,7 @@ import { DatabaseDictionaryService } from './services/database-dictionary.servic
       },
     }),
   ],
-  providers: [DatabaseDictionaryService],
+  // providers: [DatabaseDictionaryService],
+  providers: [],
 })
 export class DatabaseModule {}

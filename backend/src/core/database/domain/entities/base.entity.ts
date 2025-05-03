@@ -10,7 +10,7 @@ import { Exclude } from 'class-transformer';
 export abstract class BaseEntity {
   @ApiProperty({ description: 'Record identification code' })
   @PrimaryGeneratedColumn({ comment: 'Record identification code' })
-  public id?: number;
+  public id: number;
 
   @ApiProperty({ description: 'Record creation date' })
   @CreateDateColumn({
@@ -19,7 +19,7 @@ export abstract class BaseEntity {
     comment: 'Record creation date',
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
-  public createdAt?: Date;
+  public createdAt: Date;
 
   @Exclude()
   @ApiProperty({ description: 'Record edition date' })
@@ -29,7 +29,7 @@ export abstract class BaseEntity {
     comment: 'Record edition date',
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
-  public updatedAt?: Date;
+  public updatedAt: Date;
 
   @Exclude()
   @ApiProperty({ description: 'Record deletion date' })

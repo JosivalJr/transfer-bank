@@ -5,6 +5,8 @@ import { join } from 'path';
 import { EnvironmentVariablesModule } from '@core/enviroment-variables/enviroment-variables.module';
 import { MailModule } from '@core/mail/mail.module';
 import { DatabaseModule } from '@core/database/database.module';
+import { AuthModule } from '@modules/auth/auth.module';
+import { UserModule } from '@modules/user/user.module';
 
 @Module({
   imports: [
@@ -15,8 +17,10 @@ import { DatabaseModule } from '@core/database/database.module';
     }),
     MulterModule.register({}),
     EnvironmentVariablesModule,
-    MailModule,
     DatabaseModule,
+    AuthModule,
+    MailModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
