@@ -4,6 +4,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { join } from 'path';
 import { EnvironmentVariablesModule } from '@core/enviroment-variables/enviroment-variables.module';
 import { MailModule } from '@core/mail/mail.module';
+import { DatabaseModule } from '@core/database/database.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { MailModule } from '@core/mail/mail.module';
     MulterModule.register({}),
     EnvironmentVariablesModule,
     MailModule,
+    DatabaseModule,
   ],
   controllers: [],
   providers: [],
