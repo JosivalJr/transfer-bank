@@ -17,7 +17,7 @@ export class UserSeed1746311075379 implements Seeder {
     });
 
     if (hasUserMaster) {
-      console.log('Previously executed user seed.');
+      console.info('Previously executed user seed.');
       return;
     }
 
@@ -30,6 +30,6 @@ export class UserSeed1746311075379 implements Seeder {
       password,
     });
 
-    console.log('User seed executed successfully!');
+    console.info('User seed executed successfully!');
   }
 }

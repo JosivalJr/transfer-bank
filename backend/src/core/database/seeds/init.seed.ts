@@ -8,6 +8,6 @@ export class InitSeeder implements Seeder {
       seeds: [UserSeed1746311075379],
     });
 
-    console.log('Seeds successfully executed!');
+    console.info('Seeds successfully executed!');
   }
 }
