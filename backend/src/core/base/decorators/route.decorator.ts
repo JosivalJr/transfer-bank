@@ -1,4 +1,10 @@
-import { Controller, SerializeOptions, applyDecorators } from '@nestjs/common';
+import { AuthGuard } from '@modules/auth/domain/guards/auth.guard';
+import {
+  Controller,
+  SerializeOptions,
+  UseGuards,
+  applyDecorators,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 export abstract class ControllerDecorator {
@@ -37,6 +43,6 @@ export abstract class ControllerDecorator {
   }
 
   protected login() {
-    return applyDecorators(ApiBearerAuth());
+    return applyDecorators(UseGuards(AuthGuard), ApiBearerAuth());
   }
 }

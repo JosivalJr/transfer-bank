@@ -7,6 +7,7 @@ import { EnvironmentVariablesModule } from '@core/enviroment-variables/enviromen
 import { EnvironmentVariablesProvider } from '@core/enviroment-variables/providers/enviroment-variables.provider';
 import { AuthService } from './services/auth.service';
 import { AuthControllers } from './controllers/auth.controller';
+import { AuthGuard } from './domain/guards/auth.guard';
 
 @Global()
 @Module({
@@ -25,7 +26,7 @@ import { AuthControllers } from './controllers/auth.controller';
     MailModule,
   ],
   controllers: [...AuthControllers],
-  providers: [AuthService],
-  exports: [AuthService, UserModule],
+  providers: [AuthService, AuthGuard],
+  exports: [AuthService, AuthGuard, UserModule],
 })
 export class AuthModule {}
