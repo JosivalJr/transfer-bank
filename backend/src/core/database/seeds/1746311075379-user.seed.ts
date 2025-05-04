@@ -25,6 +25,7 @@ export class UserSeed1746311075379 implements Seeder {
 
     await userRepository.save({
       name: 'Root Admin',
+      cpf: '80308956079',
       email: this.masterUserEmail,
       password,
     });

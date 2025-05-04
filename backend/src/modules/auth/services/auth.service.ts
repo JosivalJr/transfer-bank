@@ -10,9 +10,11 @@ import { TokenProvider } from './providers/token.provider';
 import { TokenRefreshProvider } from './providers/token-refresh.provider';
 import { PasswordResetProvider } from './providers/password-reset.provider';
 import { PasswordRecoveryProvider } from './providers/password-recovery.provider';
+import { CreateUserProvider } from '@modules/user/services/providers/create-user.provider';
 
 @Injectable()
 export class AuthService {
+  public createAccount: CreateUserProvider;
   public login: LoginProvider;
   public token: TokenProvider;
   public tokenRefresh: TokenRefreshProvider;
@@ -25,6 +27,8 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly env: EnvironmentVariablesProvider,
   ) {
+    this.createAccount = new CreateUserProvider(this.userRepository);
+
     this.token = new TokenProvider(this.jwtService, this.env);
 
     this.tokenRefresh = new TokenRefreshProvider(

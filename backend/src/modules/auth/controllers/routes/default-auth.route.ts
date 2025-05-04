@@ -10,10 +10,34 @@ import { PasswordResetDTO } from '@modules/auth/domain/dtos/password-reset.dto';
 import { PasswordRecoveryDTO } from '@modules/auth/domain/dtos/password-recovery.dto';
 
 import { AuthController } from '../decorators/auth-controller.decorator';
+import { CreateUserDTO } from '@modules/user/domain/dtos/create-user.dto';
 
 @AuthController.default()
 export class DefaultAuthController {
   public constructor(private readonly service: AuthService) {}
+
+  @Endpoint.post({
+    url: '/create-account',
+    description: 'Create a new account',
+    dtoName: 'CreateUserDTO',
+
+    responses: [
+      {
+        status: 200,
+        description: 'Account created successfully',
+        response: AuthPayload,
+      },
+      {
+        description: 'An error occurred validating the submitted object',
+        status: 412,
+      },
+    ],
+  })
+  public async create(@Body() dto: CreateUserDTO) {
+    return await this.service.createAccount.execute({
+      dto,
+    });
+  }
 
   @Endpoint.post({
     url: '/login',

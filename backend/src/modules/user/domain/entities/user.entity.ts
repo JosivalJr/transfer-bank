@@ -25,6 +25,15 @@ export class UserEntity extends BaseEntity {
   })
   public email: string;
 
+  @ColumnEntity({
+    name: 'cpf',
+    type: 'varchar',
+    length: 11,
+    example: '000.000.000-00',
+    description: 'User CPF',
+  })
+  public cpf: string;
+
   @Exclude()
   @ColumnEntity({
     name: 'password',

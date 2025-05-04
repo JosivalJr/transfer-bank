@@ -27,6 +27,17 @@ export class CreateUserDTO {
   })
   public email: string;
 
+  @ApiProperty({
+    description: 'User CPF',
+    example: '000.000.000-00',
+  })
+  @IsString()
+  @IsNotEmpty({ message: 'CPF cannot be empty' })
+  @Length(11, 14, {
+    message: `The CPF must contain ${11} numeric digits`,
+  })
+  public cpf: string;
+
   @ApiProperty({ description: 'User password', example: 'Password@2025' })
   @IsStrongPassword(
     {

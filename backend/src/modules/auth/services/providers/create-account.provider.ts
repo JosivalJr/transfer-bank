@@ -8,25 +8,25 @@ import { PasswordHelper } from '@modules/user/domain/helpers/password.helper';
 import { UserRepository } from '@modules/user/domain/repositories/user.repository';
 
 type CreateUserParams = {
-  dto: CreateUserDTO;
+  data: CreateUserDTO;
   queryRunner?: QueryRunner;
 };
 
-export class CreateUserProvider {
+export class CreateAccountProvider {
   public constructor(private readonly userRepository: UserRepository) {}
 
   public async execute({
-    dto,
+    data,
     queryRunner,
   }: CreateUserParams): Promise<UserEntity> {
-    await this.validateUserEmail(dto.email);
+    await this.validateUserEmail(data.email);
 
     if (queryRunner) {
-      return await this.saveUserWithTransaction(dto, queryRunner);
+      return await this.saveUserWithTransaction(data, queryRunner);
     }
 
     return await this.userRepository.transaction(async (query) => {
-      return await this.saveUserWithTransaction(dto, query);
+      return await this.saveUserWithTransaction(data, query);
     });
   }
 
@@ -52,7 +52,6 @@ export class CreateUserProvider {
   private async saveUserWithTransaction(
     data: CreateUserDTO,
     query: QueryRunner,
-    authUser?: UserEntity,
   ) {
     const user = await query.manager.save(
       UserEntity,
