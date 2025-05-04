@@ -4,13 +4,13 @@ export const palette: Record<PaletteMode, PaletteOptions> = {
   light: {
     mode: 'light',
     primary: {
-      main: '#1976d2',
+      main: '#0546a7',
       light: '#42a5f5',
       dark: '#1565c0',
       contrastText: '#fff',
     },
     secondary: {
-      main: '#9c27b0',
+      main: '#ab47bc',
       light: '#ba68c8',
       dark: '#7b1fa2',
       contrastText: '#fff',
@@ -53,16 +53,16 @@ export const palette: Record<PaletteMode, PaletteOptions> = {
   dark: {
     mode: 'dark',
     primary: {
-      main: '#90caf9',
-      light: '#e3f2fd',
-      dark: '#42a5f5',
-      contrastText: 'rgba(0, 0, 0, 0.87)',
+      main: '#0546a7',
+      light: '#42a5f5',
+      dark: '#1565c0',
+      contrastText: '#fff',
     },
     secondary: {
-      main: '#ce93d8',
-      light: '#f3e5f5',
-      dark: '#ab47bc',
-      contrastText: 'rgba(0, 0, 0, 0.87)',
+      main: '#ab47bc',
+      light: '#ba68c8',
+      dark: '#7b1fa2',
+      contrastText: '#fff',
     },
     error: {
       main: '#f44336',

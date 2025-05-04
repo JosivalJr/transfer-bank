@@ -1,10 +1,14 @@
 import { Navigate } from 'react-router-dom';
-import { Home } from '@mui/icons-material';
 
 import { EAuthenticatedPath } from '../domain/enums/authenticated-path.enum';
 import { Route } from '../domain/interfaces';
 
-import { WALLET_ROUTE } from './authenticateds';
+import {
+  HOME_ROUTE,
+  WALLET_ROUTE,
+  TRANSACTIONS_ROUTE,
+  PORTIFOIL_ROUTE,
+} from './authenticateds';
 
 export const AUTHENTICATED_ROUTES: Array<Route> = [
   {
@@ -13,11 +17,8 @@ export const AUTHENTICATED_ROUTES: Array<Route> = [
     path: '*',
     element: <Navigate to={EAuthenticatedPath.HOME} />,
   },
-  {
-    name: 'Home',
-    path: EAuthenticatedPath.HOME,
-    icon: <Home />,
-    element: <h1>Home Page</h1>,
-  },
+  HOME_ROUTE,
+  TRANSACTIONS_ROUTE,
+  PORTIFOIL_ROUTE,
   WALLET_ROUTE,
 ];

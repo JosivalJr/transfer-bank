@@ -37,7 +37,7 @@ export function ControlledCheckbox({
           control={
             <Checkbox
               {...field}
-              color={props.color}
+              color={props.color || 'secondary'}
               checked={field.value ? true : false}
             />
           }
