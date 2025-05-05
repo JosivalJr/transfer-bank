@@ -1,8 +1,9 @@
 import { JwtModule } from '@nestjs/jwt';
-import { Global, Module } from '@nestjs/common';
+import { forwardRef, Global, Module } from '@nestjs/common';
 
 import { MailModule } from '@core/mail/mail.module';
 import { UserModule } from '@modules/user/user.module';
+import { CurrencyExchangeModule } from '@modules/currency-exchange/currency-exchange.module';
 import { EnvironmentVariablesModule } from '@core/enviroment-variables/enviroment-variables.module';
 import { EnvironmentVariablesProvider } from '@core/enviroment-variables/providers/enviroment-variables.provider';
 import { AuthService } from './services/auth.service';
@@ -24,6 +25,7 @@ import { AuthGuard } from './domain/guards/auth.guard';
     }),
     UserModule,
     MailModule,
+    forwardRef(() => CurrencyExchangeModule),
   ],
   controllers: [...AuthControllers],
   providers: [AuthService, AuthGuard],

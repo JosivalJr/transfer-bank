@@ -10,11 +10,12 @@ import { TokenProvider } from './providers/token.provider';
 import { TokenRefreshProvider } from './providers/token-refresh.provider';
 import { PasswordResetProvider } from './providers/password-reset.provider';
 import { PasswordRecoveryProvider } from './providers/password-recovery.provider';
-import { CreateUserProvider } from '@modules/user/services/providers/create-user.provider';
+import { CreateAccountProvider } from './providers/create-account.provider';
+import { CurrencyExchangeRepository } from '@modules/currency-exchange/domain/repositories/currency-exchange.repository';
 
 @Injectable()
 export class AuthService {
-  public createAccount: CreateUserProvider;
+  public createAccount: CreateAccountProvider;
   public login: LoginProvider;
   public token: TokenProvider;
   public tokenRefresh: TokenRefreshProvider;
@@ -23,11 +24,15 @@ export class AuthService {
 
   public constructor(
     private readonly userRepository: UserRepository,
+    private readonly currencyExchangeRepository: CurrencyExchangeRepository,
     private readonly mailService: MailService,
     private readonly jwtService: JwtService,
     private readonly env: EnvironmentVariablesProvider,
   ) {
-    this.createAccount = new CreateUserProvider(this.userRepository);
+    this.createAccount = new CreateAccountProvider(
+      this.userRepository,
+      this.currencyExchangeRepository,
+    );
 
     this.token = new TokenProvider(this.jwtService, this.env);
 
