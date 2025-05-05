@@ -25,6 +25,11 @@ export default class TransferBalanceWalletProvider {
     const recipientWallet = await this.getWallet(dto.recipientWalletId);
     const currency = await this.getCurrencyExchange(dto.currencyId);
 
+    if (senderWallet.id === recipientWallet.id)
+      throw new HttpException(
+        'You cannot make a transfer to the same wallet.',
+        409,
+      );
     if (senderWallet.balance < dto.amount)
       throw new HttpException('Insufficient sender wallet balance.', 412);
 

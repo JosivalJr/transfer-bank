@@ -16,6 +16,10 @@ export class WalletEntity extends BaseEntity {
     precision: 18,
     scale: 2,
     default: 0,
+    transformer: {
+      to: (value: number) => value,
+      from: (value: string) => parseFloat(value),
+    },
   })
   public balance: number;
 

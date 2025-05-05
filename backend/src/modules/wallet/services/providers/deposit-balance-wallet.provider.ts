@@ -91,7 +91,7 @@ export default class DepositBalanceWalletProvider {
   }
 
   private async serializeWalletData(wallet: WalletEntity, balance: number) {
-    return plainToInstance(
+    const value = plainToInstance(
       WalletEntity,
       {
         ...wallet,
@@ -99,6 +99,7 @@ export default class DepositBalanceWalletProvider {
       },
       { ignoreDecorators: true },
     );
+    return value;
   }
 
   private async serializeFiatTransactionData(
