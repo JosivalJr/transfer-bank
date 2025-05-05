@@ -17,7 +17,7 @@
 ## 📌 Resumo do Projeto
 
 <br/>
-O projeto consiste em uma aplicação web interativa que consome dados da API SWAPI (Star Wars API) e os exibe em uma interface visualmente atraente.
+O projeto consiste em uma aplicação web que simula uma conta de Banco Digital, onde é possível realizar operações financeiras básicas de forma prática e intuitiva. O objetivo é proporcionar uma experiência semelhante à de uma carteira digital real, com foco em usabilidade, organização e boas práticas de desenvolvimento.
 <br><br>
 
 ## ⭐ Features
