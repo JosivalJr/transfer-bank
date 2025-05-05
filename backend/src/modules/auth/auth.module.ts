@@ -1,5 +1,6 @@
 import { JwtModule } from '@nestjs/jwt';
 import { forwardRef, Global, Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { MailModule } from '@core/mail/mail.module';
 import { UserModule } from '@modules/user/user.module';
@@ -9,10 +10,12 @@ import { EnvironmentVariablesProvider } from '@core/enviroment-variables/provide
 import { AuthService } from './services/auth.service';
 import { AuthControllers } from './controllers/auth.controller';
 import { AuthGuard } from './domain/guards/auth.guard';
+import { UserEntity } from '@modules/user/domain/entities/user.entity';
 
 @Global()
 @Module({
   imports: [
+    TypeOrmModule.forFeature([UserEntity]),
     JwtModule.registerAsync({
       imports: [EnvironmentVariablesModule],
       inject: [EnvironmentVariablesProvider],
