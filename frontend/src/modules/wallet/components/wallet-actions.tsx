@@ -57,7 +57,7 @@ export function WalletActions() {
         sx={{
           backgroundColor: 'background.paper',
           borderRadius: 3,
-          py: 2,
+          paddingY: 2,
         }}
       >
         {Object.entries(actionComponents).map(([key, action]) => (
@@ -75,7 +75,7 @@ export function WalletActions() {
               >
                 {action.icon}
               </IconButton>
-              <Typography variant="body2" color="primary.contrastText" pt={1}>
+              <Typography variant="body2" color="text.primary" pt={1}>
                 {action.label}
               </Typography>
             </Box>

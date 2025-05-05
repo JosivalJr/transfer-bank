@@ -8,6 +8,7 @@ import {
   ListItemText,
   Stack,
   Theme,
+  Typography,
   useMediaQuery,
 } from '@mui/material';
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
@@ -113,7 +114,11 @@ export function AuthenticatedSidebar({ children }: PropsWithChildren) {
             padding={1}
             gap={1}
           >
-            <Box className="custom-sidebar-logo">Logo</Box>
+            <Box className="custom-sidebar-logo">
+              <Typography sx={{ color: 'primary.contrastText' }}>
+                Logo
+              </Typography>
+            </Box>
           </Stack>
 
           <Box className="custom-sidebar-items" data-open={open}>

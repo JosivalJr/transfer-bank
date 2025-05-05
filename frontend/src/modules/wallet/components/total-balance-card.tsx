@@ -54,7 +54,7 @@ export function TotalBalanceCard() {
           bottom: 0,
           left: 0,
           right: 0,
-          transform: 'translate(69%, 10%)',
+          transform: 'translate(68%, 10%)',
         }}
       >
         <ResponsiveContainer width="100%" height="100%">

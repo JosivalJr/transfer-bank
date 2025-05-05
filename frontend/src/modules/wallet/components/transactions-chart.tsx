@@ -39,7 +39,7 @@ export function TransactionsChart() {
             contentStyle={{
               backgroundColor: primary.main,
               border: 'none',
-              color: 'white',
+              color: primary.contrastText,
             }}
           />
           <Bar dataKey="spent" stackId="a" fill={secondary.main} />

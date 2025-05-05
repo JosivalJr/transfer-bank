@@ -4,6 +4,7 @@ import {
   useMediaQuery,
   AppBar,
   Toolbar,
+  useTheme,
 } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 
@@ -13,13 +14,21 @@ import { useSidebar } from './authenticated-sidebar';
 
 export function AuthenticatedHeader() {
   const { toggleSidebar } = useSidebar();
+  const { palette } = useTheme();
+
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm'),
   );
 
   return (
     <>
-      <AppBar position="static" square>
+      <AppBar
+        position="static"
+        square
+        sx={{
+          backgroundColor: palette.primary.main + ' !important',
+        }}
+      >
         <Toolbar
           sx={{
             display: 'flex',
