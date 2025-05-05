@@ -27,12 +27,29 @@ interface TransferFormProps {
 export function TransferFormWrapper({ onSuccess }: TransferFormProps) {
   const { wallet } = useAuth();
   const walletId = Number(wallet?.id);
+  const currencyId = Number(wallet?.currency?.id);
+
+  const transferTransactionResolver = (
+    data: any,
+    context: any,
+    options: any,
+  ) => {
+    const newData = {
+      ...data,
+      amount: Number(data.amount),
+      recipientWalletId: Number(data.recipientWalletId),
+    };
+    return zodResolver(transferTransactionSchema)(newData, context, options);
+  };
 
   const methods = useForm<TransferTransactionData>({
     defaultValues: {
       walletId,
+      currencyId,
+      senderWalletId: walletId,
     },
-    resolver: zodResolver(transferTransactionSchema),
+    resolver: (data, context, options) =>
+      transferTransactionResolver(data, context, options),
   });
 
   return (
@@ -50,7 +67,7 @@ export function TransferFormWrapper({ onSuccess }: TransferFormProps) {
           <Grid size={12}>
             <ControlledText
               label="Destination Wallet"
-              name="destinationWallet"
+              name="recipientWalletId"
               size="small"
               control={methods.control}
             />

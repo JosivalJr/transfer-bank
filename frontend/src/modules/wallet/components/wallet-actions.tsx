@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import { Box, Stack, IconButton, Typography } from '@mui/material';
-import { Wallet, Send } from '@mui/icons-material';
+import { Wallet, SystemUpdateAlt, SyncAlt } from '@mui/icons-material';
 
 import {
   ActionModal,
@@ -23,12 +23,12 @@ const actionComponents: Record<string, ActionComponent> = {
     form: DepositFormWrapper,
   },
   Withdraw: {
-    icon: <Send />,
+    icon: <SystemUpdateAlt />,
     label: 'Withdraw',
     form: WithdrawFormWrapper,
   },
   Transfer: {
-    icon: <Send />,
+    icon: <SyncAlt />,
     label: 'Transfer',
     form: TransferFormWrapper,
   },

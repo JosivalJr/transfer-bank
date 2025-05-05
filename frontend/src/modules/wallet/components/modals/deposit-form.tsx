@@ -52,7 +52,7 @@ export function DepositFormWrapper({ onSuccess }: DepositFormProps) {
   return (
     <FormProvider {...methods}>
       <Box component="form">
-        <Grid container width="100%" spacing={2} paddingY={1}>
+        <Grid container spacing={2} paddingY={1}>
           <Grid size={12}>
             <ControlledCurrency
               label="Deposit Value"

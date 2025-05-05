@@ -28,7 +28,7 @@ export function WithdrawFormWrapper({ onSuccess }: WithdrawFormProps) {
   const walletId = Number(wallet?.id);
   const currencyId = Number(wallet?.currency?.id);
 
-  const depositTransactionResolver = (
+  const withdrawTransactionResolver = (
     data: any,
     context: any,
     options: any,
@@ -46,7 +46,7 @@ export function WithdrawFormWrapper({ onSuccess }: WithdrawFormProps) {
       currencyId,
     },
     resolver: (data, context, options) =>
-      depositTransactionResolver(data, context, options),
+      withdrawTransactionResolver(data, context, options),
   });
 
   return (
