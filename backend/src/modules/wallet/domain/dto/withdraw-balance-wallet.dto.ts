@@ -2,11 +2,11 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export default class WithdrawBalanceWalletDTO {
   @ApiProperty({ description: 'Wallet identification' })
-  public walletId?: number;
+  public walletId: number;
 
   @ApiProperty({ description: 'Currency exchange identification' })
-  public currencyId?: number;
+  public currencyId: number;
 
   @ApiProperty({ description: 'Withdraw amount value' })
-  public amount?: number;
+  public amount: number;
 }

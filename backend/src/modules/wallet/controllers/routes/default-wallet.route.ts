@@ -22,7 +22,9 @@ export class DefaultWalletController {
     ],
   })
   public async deposit(@Body() dto: DepositWalletDTO) {
-    return await this.fiatTransactionService.depositTransaction.execute(dto);
+    return await this.fiatTransactionService.depositTransaction.execute({
+      dto,
+    });
   }
 
   @Endpoint.post({
@@ -36,7 +38,9 @@ export class DefaultWalletController {
     ],
   })
   public async withdraw(@Body() dto: WithdrawWalletDTO) {
-    return await this.fiatTransactionService.withdrawTransaction.execute(dto);
+    return await this.fiatTransactionService.withdrawTransaction.execute({
+      dto,
+    });
   }
 
   @Endpoint.post({
@@ -50,6 +54,8 @@ export class DefaultWalletController {
     ],
   })
   public async transfer(@Body() dto: TransferWalletDTO) {
-    return await this.fiatTransactionService.transferTransaction.execute(dto);
+    return await this.fiatTransactionService.transferTransaction.execute({
+      dto,
+    });
   }
 }
