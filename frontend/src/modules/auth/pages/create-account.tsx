@@ -49,6 +49,11 @@ export function CreateAccount() {
   async function handleCreateAccount(data: CreateAccountData) {
     try {
       await createAccount(data);
+
+      setAlert({
+        message: 'Account created successfully',
+        type: 'success',
+      });
     } catch (error) {
       setAlert({
         message: formatErrorForNotification(error),

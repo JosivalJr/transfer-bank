@@ -94,7 +94,7 @@ export const palette: Record<PaletteMode, PaletteOptions> = {
       disabled: 'rgba(255, 255, 255, 0.5)',
     },
     background: {
-      paper: '#434343',
+      paper: '#1a1a1a',
       default: '#202020',
     },
     divider: 'rgba(255, 255, 255, 0.12)',

@@ -39,7 +39,7 @@ export function AuthenticatedHeaderProfile() {
   return (
     <>
       <Avatar
-        title="Opções do usuário"
+        title="User Options"
         onClick={handleToggle}
         sx={{
           width: 40,
@@ -69,7 +69,7 @@ export function AuthenticatedHeaderProfile() {
               elevation={3}
               sx={{
                 minWidth: 240,
-                maxWidth: 300,
+                maxWidth: 320,
                 marginTop: 1,
               }}
             >
@@ -77,7 +77,7 @@ export function AuthenticatedHeaderProfile() {
                 <Stack gap={2} padding={2}>
                   <Stack direction="row" gap={2} alignItems="center">
                     <Avatar
-                      alt="Foto de Perfil"
+                      alt="Profile Photo"
                       src={undefined}
                       sx={{
                         boxShadow: 3,
@@ -90,8 +90,6 @@ export function AuthenticatedHeaderProfile() {
                     </Avatar>
 
                     <Stack width="calc(100% - 80px)">
-                      <Typography fontSize={16}>{user?.name}</Typography>
-
                       <Typography
                         fontSize={12}
                         fontWeight="bold"
