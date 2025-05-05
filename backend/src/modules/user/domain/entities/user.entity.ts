@@ -1,8 +1,11 @@
 import { Exclude } from 'class-transformer';
+import { JoinColumn, ManyToOne, OneToOne } from 'typeorm';
 
 import { BaseEntity } from '@core/database/domain/entities/base.entity';
 import { EntityTable } from '@core/database/domain/decorators/table-entity.decorator';
 import { ColumnEntity } from '@core/database/domain/decorators/column-entity.decorator';
+
+import { WalletEntity } from '@modules/wallet/domain/entities/wallet.entity';
 
 @EntityTable('users', 'Table to store user data')
 export class UserEntity extends BaseEntity {
@@ -52,4 +55,7 @@ export class UserEntity extends BaseEntity {
     default: false,
   })
   public resetPassword: boolean;
+
+  @OneToOne(() => WalletEntity, (wallet) => wallet.user)
+  wallet: WalletEntity;
 }

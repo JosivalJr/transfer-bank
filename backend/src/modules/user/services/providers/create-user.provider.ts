@@ -52,7 +52,6 @@ export class CreateUserProvider {
   private async saveUserWithTransaction(
     data: CreateUserDTO,
     query: QueryRunner,
-    authUser?: UserEntity,
   ) {
     const user = await query.manager.save(
       UserEntity,
