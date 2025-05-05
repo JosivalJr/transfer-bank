@@ -21,7 +21,6 @@ import {
 } from '../domain/dto';
 import { Auth, AuthAction, UseAuth } from '../domain/interfaces';
 import { EAuthAction } from '../domain/enums';
-import { toast } from 'react-toastify';
 
 export const AuthContext = createContext<UseAuth>({} as UseAuth);
 
@@ -33,11 +32,13 @@ function authReducer(state: Auth, action: AuthAction) {
       ...state,
       authenticated: true,
       user: user,
+      wallet: user?.wallet,
     },
     [EAuthAction.LOGOUT]: {
       ...state,
       authenticated: false,
       user: null,
+      wallet: null,
     },
   };
 
@@ -124,8 +125,6 @@ export function AuthProvider({ children }: PropsWithChildren) {
       setLoading(true);
 
       await repository.createAccount(dto);
-      navigate(EUnauthenticatedPath.LOGIN);
-      toast.success('Account created successfully.');
     } finally {
       setLoading(false);
     }

@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import { IMaskInput } from 'react-imask';
 import { TextField, TextFieldProps, Typography } from '@mui/material';
 import { useController, UseControllerProps } from 'react-hook-form';
+import { useAuth } from '@/modules/auth/hooks';
 
 interface IControlledCurrencyProps
   extends UseControllerProps<any>,
@@ -38,6 +39,8 @@ export function ControlledCurrency({
     fieldState: { error },
   } = useController(props);
 
+  const { wallet } = useAuth();
+
   return (
     <TextField
       {...props}
@@ -53,7 +56,7 @@ export function ControlledCurrency({
           inputComponent: CurrencyMask,
           startAdornment: (
             <Typography variant="body1" marginRight={1}>
-              R$
+              {wallet?.currency?.symbol || '$'}
             </Typography>
           ),
         },
